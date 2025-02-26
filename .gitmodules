@@ -1,0 +1,3 @@
+[submodule "Intelligent_IDE/llm-app/frontend"]
+	path = Intelligent_IDE/llm-app/frontend
+	url = https://github.com/TanviPoddar/frontend.git
