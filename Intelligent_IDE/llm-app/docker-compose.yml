@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://backend:5000
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DOCKER_HOST=tcp://host.docker.internal:2375
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ide_db
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ide_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  ci_service:
+    build:
+      context: ./ci_service
+      dockerfile: Dockerfile
+    volumes:
+      - ./ci_service:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
