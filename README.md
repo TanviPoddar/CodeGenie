@@ -1,4 +1,21 @@
 # CodeGenie
+## Project Overview
+The Intelligent IDE is an AI-powered development environment designed to enhance developer productivity. It automates code generation, test creation, and debugging with advanced AI-driven suggestions, making bug fixing seamless. The project also integrates continuous build and integration processes to streamline development workflows.
+
+To ensure a consistent and scalable setup, Docker is used for containerized deployment, enabling easy installation and execution across different environments.
+## AI Assistant
+![image](https://github.com/user-attachments/assets/2fceda79-d2f5-4c8c-b2a1-4271daa31f50)
+## Run code
+![image](https://github.com/user-attachments/assets/2b562e88-5baf-46cc-81c0-df48ee9dfd5c)
+## Generate tests
+![image](https://github.com/user-attachments/assets/ad32a485-6418-4b16-b286-616897ff3c0a)
+## Debug code
+![image](https://github.com/user-attachments/assets/d04fd2d0-b72b-4200-993b-c8b57bb9cf9b)
+## Build and deploy if test cases passed
+![image](https://github.com/user-attachments/assets/1c4d9c96-3659-46c9-b2e2-2d262d6d676c)
+
+
+
 # Project Setup and Running Guide
 
 This guide provides step-by-step instructions to set up, build, and run the project using Docker.
@@ -121,6 +138,6 @@ docker exec -it <container_name> /bin/sh
 ```
 
 ---
-
+To view the setup required for frontend, go to Intelligent_IDE/llm-app/frontend repository linked
 Now the project is up and running with Docker! 🎉
 
